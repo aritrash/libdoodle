@@ -1,4 +1,4 @@
-#include <doodle/svg.hpp>
+#include "svg.hpp"
 
 #include <cmath>
 #include <fstream>

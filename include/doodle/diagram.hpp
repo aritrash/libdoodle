@@ -14,6 +14,7 @@
 
 namespace doodle
 {
+    class SvgCanvas;
     class Diagram
     {
     public:
@@ -46,7 +47,6 @@ namespace doodle
         bool export_svg(const std::string& filename) const;
 
     private:
-        class SvgCanvas;
         SvgCanvas* canvas_;
     };
 }

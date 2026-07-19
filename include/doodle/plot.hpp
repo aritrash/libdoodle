@@ -47,7 +47,6 @@ namespace doodle
         bool export_pdf(const std::string& filename);
 
     private:
-
         struct Series
         {
             std::vector<double> x;
@@ -64,6 +63,9 @@ namespace doodle
             Histogram,
             Pie
         };
+
+        bool export_impl(const std::string& filename,
+                         const std::string& terminal);
 
         PlotType type_;
 

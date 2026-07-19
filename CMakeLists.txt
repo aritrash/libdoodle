@@ -48,5 +48,10 @@ endif()
 target_compile_features(doodle PUBLIC cxx_std_20)
 
 add_executable(test_plot tests/test_plot.cpp)
-
 target_link_libraries(test_plot PRIVATE doodle)
+
+add_executable(test_diagram tests/test_diagram.cpp)
+target_link_libraries(test_diagram PRIVATE doodle)
+
+add_executable(test_flowchart tests/test_flowchart.cpp)
+target_link_libraries(test_flowchart PRIVATE doodle)

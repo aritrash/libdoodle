@@ -45,6 +45,18 @@ namespace doodle
         bool export_svg(const std::string& filename) const;
 
     private:
+        void connect_previous(double x,
+                              double y,
+                              double width,
+                              double height);
+
         Diagram diagram_;
+
+        bool has_previous_ = false;
+
+        double previous_x_ = 0.0;
+        double previous_y_ = 0.0;
+        double previous_width_ = 0.0;
+        double previous_height_ = 0.0;
     };
 }

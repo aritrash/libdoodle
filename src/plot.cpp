@@ -217,6 +217,7 @@ bool Plot::export_impl(const std::string& filename,
             script << "set style data histograms\n";
             script << "set style fill solid 1.0 border -1\n";
             script << "set boxwidth 0.8\n";
+            script << "set yrange [0:*]\n";
             script << "plot '" << data
                    << "' using 2:xtic(1) notitle\n";
 

@@ -7,8 +7,33 @@ namespace doodle
     {
     }
 
-    void Flowchart::start(double x, double y,
-                          double width, double height,
+    void Flowchart::connect_previous(double x,
+                                     double y,
+                                     double width,
+                                     double height)
+    {
+        if (has_previous_)
+        {
+            diagram_.connect(
+                previous_x_ + previous_width_ / 2.0,
+                previous_y_ + previous_height_,
+                x + width / 2.0,
+                y
+            );
+        }
+
+        previous_x_ = x;
+        previous_y_ = y;
+        previous_width_ = width;
+        previous_height_ = height;
+
+        has_previous_ = true;
+    }
+
+    void Flowchart::start(double x,
+                          double y,
+                          double width,
+                          double height,
                           const std::string& text)
     {
         diagram_.rounded_block(
@@ -18,10 +43,19 @@ namespace doodle
             height,
             text
         );
+
+        connect_previous(
+            x,
+            y,
+            width,
+            height
+        );
     }
 
-    void Flowchart::process(double x, double y,
-                            double width, double height,
+    void Flowchart::process(double x,
+                            double y,
+                            double width,
+                            double height,
                             const std::string& text)
     {
         diagram_.block(
@@ -31,10 +65,19 @@ namespace doodle
             height,
             text
         );
+
+        connect_previous(
+            x,
+            y,
+            width,
+            height
+        );
     }
 
-    void Flowchart::decision(double x, double y,
-                             double width, double height,
+    void Flowchart::decision(double x,
+                             double y,
+                             double width,
+                             double height,
                              const std::string& text)
     {
         diagram_.diamond(
@@ -44,10 +87,19 @@ namespace doodle
             height,
             text
         );
+
+        connect_previous(
+            x,
+            y,
+            width,
+            height
+        );
     }
 
-    void Flowchart::end(double x, double y,
-                        double width, double height,
+    void Flowchart::end(double x,
+                        double y,
+                        double width,
+                        double height,
                         const std::string& text)
     {
         diagram_.rounded_block(
@@ -56,6 +108,13 @@ namespace doodle
             width,
             height,
             text
+        );
+
+        connect_previous(
+            x,
+            y,
+            width,
+            height
         );
     }
 
